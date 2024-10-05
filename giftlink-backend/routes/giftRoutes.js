@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
         if (!gift) {
             return res.status(404).send('Gift not found');
         }
-
+        console.log(gift)
         res.json(gift);
     } catch (e) {
         console.error('Error fetching gift:', e);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import {urlConfig} from '../../config';
 import './DetailsPage.css';
 
 function DetailsPage() {
@@ -20,11 +21,13 @@ function DetailsPage() {
         const fetchGift = async () => {
             try {
 				// Task 2: Fetch gift details
-                const response = await fetch(`/api/gifts/${productId}`)
+                const response = await fetch(`${urlConfig.backendUrl}/api/gifts/${productId}`)
                 if (!response.ok) {
                     throw new Error('Network respons as not ok')
                 }
+                console.log(response)
                 const data = await response.json();
+                console.log("data", data)
                 setGift(data);
             } catch (error) {
                 setError(error.message);
